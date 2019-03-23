@@ -125,61 +125,61 @@
             return newDegree + Math.floor(prevDegree / 360 + (newDegree >= prevDegree % 360 ? 0 : 1)) * 360
                 ;
         }
-        function expect(name, result, expected) {
-            if (result == expected) {
-                console.log(`PASS: ${name}`);
-            } else {
-                console.error(`FAIL: ${name}. Expected: ${expected}, but got ${result}`);
-            }
-        }
-        expect('reg turn for second/minute hand', calcTurn(0, 6), 6);
-        expect('reg turn for hour hand', calcTurn(0, 1), 1);
-        expect('no turn for hour hand', calcTurn(359, 359), 359);
+        // function expect(name, result, expected) {
+        //     if (result == expected) {
+        //         console.log(`PASS: ${name}`);
+        //     } else {
+        //         console.error(`FAIL: ${name}. Expected: ${expected}, but got ${result}`);
+        //     }
+        // }
+        // expect('reg turn for second/minute hand', calcTurn(0, 6), 6);
+        // expect('reg turn for hour hand', calcTurn(0, 1), 1);
+        // expect('no turn for hour hand', calcTurn(359, 359), 359);
 
-        expect('ever increasing', calcTurn((59 + 2) * 6, 4 * 6), (60 + 4) * 6);
-        expect('no turn second round for hour hand', calcTurn(360 + 359, 359), 360 + 359);
+        // expect('ever increasing', calcTurn((59 + 2) * 6, 4 * 6), (60 + 4) * 6);
+        // expect('no turn second round for hour hand', calcTurn(360 + 359, 359), 360 + 359);
 
-        expect('last turn first round for second/minute hand', calcTurn(59 * 6, 0), 60 * 6);
-        expect('last turn first round for hour hand', calcTurn(359, 0), 360);
+        // expect('last turn first round for second/minute hand', calcTurn(59 * 6, 0), 60 * 6);
+        // expect('last turn first round for hour hand', calcTurn(359, 0), 360);
 
-        expect('last turn second round for second/minute hand', calcTurn(360 + 59 * 6, 0), 360 + 60 * 6);
-        expect('last turn second round for hour hand', calcTurn(360 + 359, 0), 360 + 360);
+        // expect('last turn second round for second/minute hand', calcTurn(360 + 59 * 6, 0), 360 + 60 * 6);
+        // expect('last turn second round for hour hand', calcTurn(360 + 359, 0), 360 + 360);
 
-        expect('forward adjust first round for second/minute hand', calcTurn(50 * 6, 52 * 6), 52 * 6);
-        expect('forward adjust first round for hour hand', calcTurn(350, 356), 356);
+        // expect('forward adjust first round for second/minute hand', calcTurn(50 * 6, 52 * 6), 52 * 6);
+        // expect('forward adjust first round for hour hand', calcTurn(350, 356), 356);
 
-        expect('forward adjust second round for second/minute hand', calcTurn(360 + 50 * 6, 52 * 6), 360 + 52 * 6);
-        expect('forward adjust second round for hour hand', calcTurn(360 + 350, 356), 360 + 356);
+        // expect('forward adjust second round for second/minute hand', calcTurn(360 + 50 * 6, 52 * 6), 360 + 52 * 6);
+        // expect('forward adjust second round for hour hand', calcTurn(360 + 350, 356), 360 + 356);
 
-        expect('forward adjust first round for last second/minute hand', calcTurn(50 * 6, 0), 60 * 6);
-        expect('forward adjust first round for last hour hand', calcTurn(350, 0), 360);
+        // expect('forward adjust first round for last second/minute hand', calcTurn(50 * 6, 0), 60 * 6);
+        // expect('forward adjust first round for last hour hand', calcTurn(350, 0), 360);
 
-        expect('forward adjust second round for last second/minute hand', calcTurn(360 + 50 * 6, 0), 360 + 60 * 6);
-        expect('forward adjust second round for last hour hand', calcTurn(360 + 350, 0), 360 + 360);
+        // expect('forward adjust second round for last second/minute hand', calcTurn(360 + 50 * 6, 0), 360 + 60 * 6);
+        // expect('forward adjust second round for last hour hand', calcTurn(360 + 350, 0), 360 + 360);
 
-        expect('forward adjust first round over 12 for second/minute hand', calcTurn(50 * 6, 5 * 6), 65 * 6);
-        expect('forward adjust first round over 12 for hour hand', calcTurn(350, 5), 365);
+        // expect('forward adjust first round over 12 for second/minute hand', calcTurn(50 * 6, 5 * 6), 65 * 6);
+        // expect('forward adjust first round over 12 for hour hand', calcTurn(350, 5), 365);
 
-        expect('forward adjust second round over 12 for second/minute hand', calcTurn(360 + 50 * 6, 5 * 6), 360 + 65 * 6);
-        expect('forward adjust second round over 12 for hour hand', calcTurn(360 + 350, 5), 360 + 365);
+        // expect('forward adjust second round over 12 for second/minute hand', calcTurn(360 + 50 * 6, 5 * 6), 360 + 65 * 6);
+        // expect('forward adjust second round over 12 for hour hand', calcTurn(360 + 350, 5), 360 + 365);
 
-        expect('backward adjust first round for second/minute hand', calcTurn(50 * 6, 48 * 6), 360 + 48 * 6);
-        expect('backward adjust first round for hour hand', calcTurn(350, 346), 360 + 346);
+        // expect('backward adjust first round for second/minute hand', calcTurn(50 * 6, 48 * 6), 360 + 48 * 6);
+        // expect('backward adjust first round for hour hand', calcTurn(350, 346), 360 + 346);
 
-        expect('backward adjust second round for second/minute hand', calcTurn(360 + 50 * 6, 48 * 6), 360 + 360 + 48 * 6);
-        expect('backward adjust second round for hour hand', calcTurn(360 + 350, 346), 360 + 360 + 346);
+        // expect('backward adjust second round for second/minute hand', calcTurn(360 + 50 * 6, 48 * 6), 360 + 360 + 48 * 6);
+        // expect('backward adjust second round for hour hand', calcTurn(360 + 350, 346), 360 + 360 + 346);
 
-        expect('backward adjust first round for last second/minute hand', calcTurn(0, 50 * 6), 50 * 6);
-        expect('backward adjust first round for last hour hand', calcTurn(0, 350), 350);
+        // expect('backward adjust first round for last second/minute hand', calcTurn(0, 50 * 6), 50 * 6);
+        // expect('backward adjust first round for last hour hand', calcTurn(0, 350), 350);
 
-        expect('backward adjust second round for last second/minute hand', calcTurn(360 + 0, 50 * 6), 360 + 50 * 6);
-        expect('backward adjust second round for last hour hand', calcTurn(360 + 0, 350), 360 + 350);
+        // expect('backward adjust second round for last second/minute hand', calcTurn(360 + 0, 50 * 6), 360 + 50 * 6);
+        // expect('backward adjust second round for last hour hand', calcTurn(360 + 0, 350), 360 + 350);
 
-        expect('backward adjust first round over 12 for second/minute hand', calcTurn(5 * 6, 50 * 6), 50 * 6);
-        expect('backward adjust first round over 12 for hour hand', calcTurn(5, 350), 350);
+        // expect('backward adjust first round over 12 for second/minute hand', calcTurn(5 * 6, 50 * 6), 50 * 6);
+        // expect('backward adjust first round over 12 for hour hand', calcTurn(5, 350), 350);
 
-        expect('backward adjust second round over 12 for second/minute hand', calcTurn(360 + 5 * 6, 50 * 6), 360 + 50 * 6);
-        expect('backward adjust second round over 12 for hour hand', calcTurn(360 + 5, 350), 360 + 350);
+        // expect('backward adjust second round over 12 for second/minute hand', calcTurn(360 + 5 * 6, 50 * 6), 360 + 50 * 6);
+        // expect('backward adjust second round over 12 for hour hand', calcTurn(360 + 5, 350), 360 + 350);
 
         function updateContainers(containerName, newDegree) {
             var containers = document.querySelectorAll(containerName);
@@ -209,9 +209,9 @@
             for (var i = 0; i < containers.length; i++) {
                 const prevDegree = containers[i].angle || 0;
                 // const turnDegree = calcTurn(prevDegree, newDegree);
-                console.log(`prevDegree: ${prevDegree}`);
+                // console.log(`prevDegree: ${prevDegree}`);
                 // console.log(`newDegree: ${newDegree}`);
-                console.log(`turnDegree: ${turnDegree}`);
+                // console.log(`turnDegree: ${turnDegree}`);
                 containers[i].style.webkitTransform = 'rotate(' + turnDegree + 'deg)';
                 containers[i].style.transform = 'rotate(' + turnDegree + 'deg)';
                 // containers[i].angle = turnDegree;
