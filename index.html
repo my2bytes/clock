@@ -5,7 +5,8 @@
     <style>
         .minutes-container,
         .hours-container,
-        .seconds-container {
+        .seconds-container,
+        .marks-container {
             position: absolute;
             top: 0;
             right: 0;
@@ -55,12 +56,58 @@
             width: 1%;
             z-index: 8;
         }
+
+        .mark {
+            background: #000;
+            height: 10%;
+            left: 49%;
+            position: absolute;
+            top: 5%;
+            transform-origin: 50% 100%;
+            width: 2%;
+        }
     </style>
 
 </head>
 
 <body>
     <article class="clock">
+        <div class="marks-container">
+            <div class="mark"></div>
+        </div>
+        <div class="marks-container">
+            <div class="mark"></div>
+        </div>
+        <div class="marks-container">
+            <div class="mark"></div>
+        </div>
+        <div class="marks-container">
+            <div class="mark"></div>
+        </div>
+        <div class="marks-container">
+            <div class="mark"></div>
+        </div>
+        <div class="marks-container">
+            <div class="mark"></div>
+        </div>
+        <div class="marks-container">
+            <div class="mark"></div>
+        </div>
+        <div class="marks-container">
+            <div class="mark"></div>
+        </div>
+        <div class="marks-container">
+            <div class="mark"></div>
+        </div>
+        <div class="marks-container">
+            <div class="mark"></div>
+        </div>
+        <div class="marks-container">
+            <div class="mark"></div>
+        </div>
+        <div class="marks-container">
+            <div class="mark"></div>
+        </div>
         <div class="hours-container">
             <div class="hours"></div>
         </div>
@@ -172,9 +219,20 @@
             // updateContainers('.minutes-container', (minutes * 6));
             // updateContainers('.seconds-container', (seconds * 6));
         }
-        function handler() {
+        function showTime() {
             moveHands(new Date);
         }
+        function drawDial() {
+            var containers = document.querySelectorAll('.marks-container');
+            for (var i = 0; i < containers.length; i++) {
+                const degree = i * 30;
+                // console.log(`for ${i}: ${degree}`);
+                containers[i].style.webkitTransform = 'rotate(' + degree + 'deg)';
+                containers[i].style.transform = 'rotate(' + degree + 'deg)';
+            }
+
+        }
+
         //validate tz
         // console.log(new Date());
         // console.log(new Date('2019-03-22T23:59:59-07:00'));
@@ -230,7 +288,8 @@
 
 
         //final code
-        handler();
-        setInterval(handler, 1000);
+        drawDial();
+        setInterval(showTime, 1000);
+        showTime();
     </script>
 </body>
